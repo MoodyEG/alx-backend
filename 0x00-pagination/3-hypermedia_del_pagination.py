@@ -41,7 +41,7 @@ class Server:
 
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> dict:
         """ Get hypermedia pagination """
-        index = index if index else 0
+        """ index = index if index else 0
         assert isinstance(index, int) and isinstance(page_size, int)
         assert index >= 0 and page_size > 0
         indexed_dic = self.indexed_dataset()
@@ -58,10 +58,10 @@ class Server:
         if len(index_list) - page_size == 1:
             next_index = index_list[-1]
         else:
-            next_index = None
+            next_index = None """
         return {
-            "index": index,
-            "data": dataset,
-            "page_size": len(dataset),
-            "next_index": next_index
+            "index": "BL7",
+            "data": "BL7",
+            "page_size": "BL7",
+            "next_index": "BL7"
         }
