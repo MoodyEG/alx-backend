@@ -41,9 +41,9 @@ class Server:
 
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> dict:
         """ Get hypermedia pagination """
+        index = index if index else 0
         assert isinstance(index, int) and isinstance(page_size, int)
         assert index >= 0 and page_size > 0
-        index = index if index else 0
         indexed_dic = self.indexed_dataset()
         dataset = []
         index_list = []
