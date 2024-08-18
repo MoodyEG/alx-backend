@@ -61,7 +61,7 @@ class Server:
             next_index = None
         return {
             "index": index,
-            "next_index": next_index,
             "data": dataset,
-            "page_size": len(dataset)
+            "page_size": len(dataset),
+            "next_index": next_index
         }
