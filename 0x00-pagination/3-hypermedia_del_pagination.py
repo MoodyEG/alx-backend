@@ -43,24 +43,24 @@ class Server:
         """ Get hypermedia pagination """
         assert isinstance(index, int) and isinstance(page_size, int)
         assert index >= 0 and page_size > 0
+        index = index if index else 0
         dataset = []
-        data_size = 0
+        index_list = []
         next_index = 0
-        ni = 0
-        for i in range(index, 1000):
-            if i in self.__indexed_dataset:
-                dataset.append(self.__indexed_dataset[i])
-                data_size += 1
-            if data_size == page_size:
-                ni = i
+        for i in sorted(self.__indexed_dataset.keys()):
+            if i >= index:
+                index_list.append(i)
+            if index_list > page_size:
                 break
-        for i in range(ni, 1000):
-            if i + 1 in self.__indexed_dataset:
-                next_index = i + 1
-                break
+        for i in index_list[:-1]:
+            dataset.append(self.__indexed_dataset[i])
+        if len(index_list) - page_size == 1:
+            next_index = index_list[-1]
+        else:
+            next_index = None
         return {
             "index": index,
             "next_index": next_index,
             "data": dataset,
-            "page_size": page_size
+            "page_size": len(dataset)
         }
