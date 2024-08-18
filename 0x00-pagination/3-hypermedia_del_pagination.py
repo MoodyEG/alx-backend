@@ -44,16 +44,17 @@ class Server:
         assert isinstance(index, int) and isinstance(page_size, int)
         assert index >= 0 and page_size > 0
         index = index if index else 0
+        indexed_dic = self.indexed_dataset()
         dataset = []
         index_list = []
         next_index = 0
-        for i in sorted(self.__indexed_dataset.keys()):
+        for i in sorted(indexed_dic.keys()):
             if i >= index:
                 index_list.append(i)
             if len(index_list) > page_size:
                 break
         for i in index_list[:-1]:
-            dataset.append(self.__indexed_dataset[i])
+            dataset.append(indexed_dic[i])
         if len(index_list) - page_size == 1:
             next_index = index_list[-1]
         else:
