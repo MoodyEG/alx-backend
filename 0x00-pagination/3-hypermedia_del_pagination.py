@@ -38,3 +38,31 @@ class Server:
                 i: dataset[i] for i in range(len(dataset))
             }
         return self.__indexed_dataset
+
+    def get_hyper_index(self, index: int = None, page_size: int = 10) -> dict:
+        """ Get hypermedia pagination """
+        index = index if index else 0
+        assert isinstance(index, int) and isinstance(page_size, int)
+        indexed_dic = self.indexed_dataset()
+        dic_keys = sorted(indexed_dic.keys())
+        assert index >= 0 and page_size > 0 and index <= dic_keys[-1]
+        dataset = []
+        index_list = []
+        next_index = 0
+        for i in dic_keys:
+            if i >= index:
+                index_list.append(i)
+            if len(index_list) > page_size:
+                break
+        for i in index_list[:-1]:
+            dataset.append(indexed_dic[i])
+        if len(index_list) - page_size == 1:
+            next_index = index_list[-1]
+        else:
+            next_index = None
+        return {
+            "index": index,
+            "data": dataset,
+            "page_size": len(dataset),
+            "next_index": next_index
+        }
