@@ -38,30 +38,3 @@ class Server:
                 i: dataset[i] for i in range(len(dataset))
             }
         return self.__indexed_dataset
-
-    def get_hyper_index(self, index: int = None, page_size: int = 10) -> dict:
-        """ Get hypermedia pagination """
-        """ index = index if index else 0
-        assert isinstance(index, int) and isinstance(page_size, int)
-        assert index >= 0 and page_size > 0
-        indexed_dic = self.indexed_dataset()
-        dataset = []
-        index_list = []
-        next_index = 0
-        for i in sorted(indexed_dic.keys()):
-            if i >= index:
-                index_list.append(i)
-            if len(index_list) > page_size:
-                break
-        for i in index_list[:-1]:
-            dataset.append(indexed_dic[i])
-        if len(index_list) - page_size == 1:
-            next_index = index_list[-1]
-        else:
-            next_index = None """
-        return {
-            "index": "BL7",
-            "data": "BL7",
-            "page_size": "BL7",
-            "next_index": "BL7"
-        }
