@@ -50,7 +50,7 @@ class Server:
         for i in sorted(self.__indexed_dataset.keys()):
             if i >= index:
                 index_list.append(i)
-            if index_list > page_size:
+            if len(index_list) > page_size:
                 break
         for i in index_list[:-1]:
             dataset.append(self.__indexed_dataset[i])
