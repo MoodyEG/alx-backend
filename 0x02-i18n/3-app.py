@@ -22,12 +22,14 @@ def get_locale():
     return request.accept_languages.best_match(app.config["LANGUAGES"])
 
 
+# for local use and testing
+# babel.init_app(app, locale_selector=get_locale)
+
+
 @app.route("/", strict_slashes=False)
 def index():
     """ Index route """
-    return render_template("3-index.html",
-                           home_title=gettext("home_title"),
-                           home_header=gettext("home_header"))
+    return render_template("3-index.html")
 
 
 if __name__ == "__main__":

@@ -16,12 +16,3 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.16.0\n"
-
-#: 3-app.py:29
-msgid "home_title"
-msgstr ""
-
-#: 3-app.py:30
-msgid "home_header"
-msgstr ""
-
