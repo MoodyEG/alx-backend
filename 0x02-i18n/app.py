@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """ Back to flask """
 from flask import Flask, render_template, request, g
-from flask_babel import Babel
+from flask_babel import Babel, format_datetime
 import pytz
 
 
@@ -80,7 +80,8 @@ def before_request():
 @app.route("/", strict_slashes=False)
 def index() -> str:
     """ Index route """
-    return render_template("7-index.html")
+    g.time = format_datetime()
+    return render_template("index.html")
 
 
 if __name__ == "__main__":
